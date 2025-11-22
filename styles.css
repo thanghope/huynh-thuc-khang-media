@@ -222,18 +222,39 @@ body::before {
 }
 
 /* Tạo nhiều snowflake rơi ở vị trí khác nhau */
-.snowflake:nth-child(1) { left: 10%; animation-duration: 8s; }
-.snowflake:nth-child(2) { left: 30%; animation-duration: 12s; }
-.snowflake:nth-child(3) { left: 50%; animation-duration: 10s; }
-.snowflake:nth-child(4) { left: 70%; animation-duration: 14s; }
-.snowflake:nth-child(5) { left: 90%; animation-duration: 9s; }
-.xmas-icons {
+.snowflakes {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5em;
-  animation: bounce 2s infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* không cản click */
+  z-index: 9999; /* nổi trên tất cả */
+  overflow: hidden;
 }
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  font-size: 1.2em;
+  color: rgba(255,255,255,0.8);
+  animation: fall linear infinite;
+}
+
+/* rơi xuống */
+@keyframes fall {
+  0% { transform: translateY(-10px) translateX(0) rotate(0deg); opacity: 0.8; }
+  100% { transform: translateY(100vh) translateX(20px) rotate(360deg); opacity: 0.8; }
+}
+
+/* set vị trí và tốc độ khác nhau cho từng snowflake */
+.snowflake:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
+.snowflake:nth-child(3) { left: 35%; animation-duration: 12s; animation-delay: 1s; }
+.snowflake:nth-child(4) { left: 50%; animation-duration: 9s; animation-delay: 3s; }
+.snowflake:nth-child(5) { left: 65%; animation-duration: 11s; animation-delay: 0.5s; }
+.snowflake:nth-child(6) { left: 80%; animation-duration: 10s; animation-delay: 2.5s; }
+.snowflake:nth-child(7) { left: 90%; animation-duration: 12s; animation-delay: 1.5s; }
 
 .xmas-icons {
   position: fixed;
