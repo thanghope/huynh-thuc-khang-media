@@ -27,13 +27,20 @@ body{
 }
 
 /* animated gradient background layer */
-body::before{
-  content:"";
-  position:fixed; inset:0; z-index:-1;
-  background: radial-gradient(600px circle at 10% 20%, rgba(139,92,246,0.08), transparent 10%),
-              radial-gradient(500px circle at 90% 80%, rgba(6,182,212,0.06), transparent 10%);
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(600px circle at 10% 20%, rgba(139,92,246,0.08), transparent 10%),   /* tím mờ */
+    radial-gradient(500px circle at 90% 80%, rgba(6,182,212,0.06), transparent 10%),   /* xanh mờ */
+    radial-gradient(400px circle at 50% 50%, rgba(248,113,113,0.05), transparent 10%); /* đỏ nhạt Noel */
   animation: bgShift 12s linear infinite;
 }
+
+
+
 @keyframes bgShift{
   0%{transform:translateY(0) scale(1)}
   50%{transform:translateY(-6%) scale(1.02)}
@@ -190,3 +197,81 @@ body::before{
   height: 36px;
   object-fit: contain;
 }
+.snowflakes {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  font-size: 1.5em;
+  color: #fff;
+  opacity: 0.8;
+  animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(100vh) translateX(50px); }
+}
+
+/* Tạo nhiều snowflake rơi ở vị trí khác nhau */
+.snowflake:nth-child(1) { left: 10%; animation-duration: 8s; }
+.snowflake:nth-child(2) { left: 30%; animation-duration: 12s; }
+.snowflake:nth-child(3) { left: 50%; animation-duration: 10s; }
+.snowflake:nth-child(4) { left: 70%; animation-duration: 14s; }
+.snowflake:nth-child(5) { left: 90%; animation-duration: 9s; }
+.xmas-icons {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  animation: bounce 2s infinite;
+}
+
+.xmas-icons {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  z-index: 9999; /* luôn trên các lớp mờ glassmorphism */
+  pointer-events: none; /* không chặn click vào các phần khác */
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.card:hover {
+  box-shadow: 0 0 15px #8b5cf6, 0 0 25px #06b6d4, 0 0 15px #f87171; /* đỏ nhạt, không quá sáng */
+}
+
+.button:hover {
+  box-shadow: 0 0 15px #8b5cf6, 0 0 25px #06b6d4, 0 0 15px #f87171;
+}
+#music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #ff8d8d, #ee53b0);
+  color: rgb(255, 23, 23);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #8b5cf6, 0 0 20px #06b6d4;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff66d9, 0 0 40px #ff8888;
+}
+

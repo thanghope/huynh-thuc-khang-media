@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Huỳnh Thúc Kháng Media</title>
+  
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,8 +15,40 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
+  
 </head>
 <body>
+    <audio id="bg-music" src="music.mp3" autoplay loop></audio>
+<button id="music-btn">🔊 Bật/Tắt nhạc</button>
+
+<script>
+  const music = document.getElementById('bg-music');
+  const btn = document.getElementById('music-btn');
+
+  btn.addEventListener('click', () => {
+    if(music.paused){
+      music.play();
+      btn.textContent = "🔊 Tắt nhạc";
+    } else {
+      music.pause();
+      btn.textContent = "🔊 Bật nhạc";
+    }
+  });
+</script>
+
+    <div class="xmas-icons">
+  <span>🎄</span><span>✨</span><span>🎁</span>
+</div>
+
+    <!-- Thêm vào body -->
+<div class="snowflakes" aria-hidden="true">
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+</div>
+
   <header class="site-header glass sticky">
     <div class="container header-inner">
       <a class="brand" href="#hero">
@@ -260,7 +293,9 @@
         <div class="join-right reveal" data-delay="140">
           <div class="contact-card">
             <h4>Liên hệ</h4>
-            <p><strong>Email:</strong> <a href="mailto:flyingpeguinsinc@gmail.com">flyingpeguinsinc@gmail.com</a></p>
+            <p><strong>Email:</strong> <a href="mailto:
+HTKmedia.team@gmail.com">
+HTKmedia.team@gmail.com</a></p>
            <p><strong>Fanpage:</strong> 
   <a href="https://www.facebook.com/profile.php?id=61581552172834" target="_blank">
     Facebook / HuynhTucKhangMedia
