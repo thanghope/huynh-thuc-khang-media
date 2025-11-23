@@ -1,9 +1,9 @@
-/* styles.css */
+
 /* Theme variables */
 :root{
-  --bg1: #0f172a; /* near black */
-  --accent-1: #8b5cf6; /* purple */
-  --accent-2: #06b6d4; /* teal/cyan */
+  --bg1: #0f172a; 
+  --accent-1: #8b5cf6; 
+  --accent-2: #06b6d4; 
   --glass: rgba(255,255,255,0.06);
   --card-bg: rgba(255,255,255,0.03);
   --text: #e6eef8;
@@ -307,17 +307,17 @@ body::before {
   overflow: hidden;
 }
 
-/* hover phóng nhẹ */
+/* hover to ra*/
 .member-card:hover{
   transform: scale(1.06);
   background: rgba(255,255,255,0.12);
 }
 
-/* info box ẩn */
+/* info box  */
 .member-card .info-box{
   position: absolute;
   left: 0;
-  bottom: -60px;             /* ẩn xuống dưới */
+  bottom: -60px;             
   width: 100%;
   padding: 10px;
   color: #fff;
@@ -345,7 +345,7 @@ body::before {
   transition: .25s ease;
 }
 
-/* avatar phóng nhẹ */
+/* avatar to ra */
 .member-card:hover .avatar{
   transform: scale(1.08);
   border-color: rgba(255,50,50,0.4); 
