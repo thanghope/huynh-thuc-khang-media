@@ -112,7 +112,7 @@ body::before {
 /* About grid */
 .about-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
 .card{background:var(--card-bg);padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.02);transition:var(--transition);backdrop-filter:blur(2px)}
-.card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 18px 50px rgba(6,182,212,0.05)}
+/* .card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 18px 50px rgba(6,182,212,0.05)} */
 
 /* Values */
 .values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:20px}
@@ -197,7 +197,7 @@ body::before {
   height: 36px;
   object-fit: contain;
 }
-.snowflakes {
+/* .snowflakes {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
@@ -207,19 +207,19 @@ body::before {
   z-index: 9999;
 }
 
-.snowflake {
+/* .snowflake {
   position: absolute;
   top: -10px;
   font-size: 1.5em;
   color: #fff;
   opacity: 0.8;
   animation: fall 10s linear infinite;
-}
+} */
 
-@keyframes fall {
+/* @keyframes fall {
   0% { transform: translateY(0) translateX(0); }
   100% { transform: translateY(100vh) translateX(50px); }
-}
+} */ */
 
 /* Tạo nhiều snowflake rơi ở vị trí khác nhau */
 .snowflakes {
@@ -229,7 +229,7 @@ body::before {
   width: 100%;
   height: 100%;
   pointer-events: none; /* không cản click */
-  z-index: 9999; /* nổi trên tất cả */
+  z-index: 300; /* nổi trên tất cả */
   overflow: hidden;
 }
 
@@ -294,5 +294,60 @@ body::before {
 #music-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #ff66d9, 0 0 40px #ff8888;
+}
+.member-card{
+  width: 220px;                 /* nhỏ như cũ */
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  transition: .25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover phóng nhẹ */
+.member-card:hover{
+  transform: scale(1.06);
+  background: rgba(255,255,255,0.12);
+}
+
+/* info box ẩn */
+.member-card .info-box{
+  position: absolute;
+  left: 0;
+  bottom: -60px;             /* ẩn xuống dưới */
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.25rem;
+  opacity: 0;
+  transition: .3s ease;
+}
+
+/* hiện khi hover */
+.member-card:hover .info-box{
+  bottom: 8px;
+  opacity: 1;
+}
+
+/* avatar giữ nguyên */
+.avatar{
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgba(255,255,255,0.2);
+  transition: .25s ease;
+}
+
+/* avatar phóng nhẹ */
+.member-card:hover .avatar{
+  transform: scale(1.08);
+  border-color: rgba(255,50,50,0.4); 
 }
 
