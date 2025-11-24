@@ -1,5 +1,4 @@
 // app.js
-// Vanilla JS scroll reveal + small UI interactions
 
 document.addEventListener('DOMContentLoaded', () => {
   // set current year in footer

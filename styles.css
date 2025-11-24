@@ -33,9 +33,9 @@ body::before {
   inset: 0;
   z-index: -1;
   background: 
-    radial-gradient(600px circle at 10% 20%, rgba(139,92,246,0.08), transparent 10%),   /* tím mờ */
-    radial-gradient(500px circle at 90% 80%, rgba(6,182,212,0.06), transparent 10%),   /* xanh mờ */
-    radial-gradient(400px circle at 50% 50%, rgba(248,113,113,0.05), transparent 10%); /* đỏ nhạt Noel */
+    radial-gradient(600px circle at 10% 20%, rgba(139,92,246,0.08), transparent 10%),   
+    radial-gradient(500px circle at 90% 80%, rgba(6,182,212,0.06), transparent 10%),   
+    radial-gradient(400px circle at 50% 50%, rgba(248,113,113,0.05), transparent 10%); 
   animation: bgShift 12s linear infinite;
 }
 
@@ -193,7 +193,7 @@ body::before {
 }
 
 .brand-logo {
-  width: 36px;  /* giữ size giống SVG cũ */
+  width: 36px;  
   height: 36px;
   object-fit: contain;
 }
@@ -228,8 +228,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* không cản click */
-  z-index: 300; /* nổi trên tất cả */
+  pointer-events: none; 
+  z-index: 300; 
   overflow: hidden;
 }
 
@@ -261,8 +261,8 @@ body::before {
   top: 10px;
   right: 10px;
   font-size: 1.5em;
-  z-index: 9999; /* luôn trên các lớp mờ glassmorphism */
-  pointer-events: none; /* không chặn click vào các phần khác */
+  z-index: 9999; 
+  pointer-events: none; 
   animation: bounce 2s infinite;
 }
 
@@ -271,7 +271,7 @@ body::before {
   50% { transform: translateY(-5px); }
 }
 .card:hover {
-  box-shadow: 0 0 15px #8b5cf6, 0 0 25px #06b6d4, 0 0 15px #f87171; /* đỏ nhạt, không quá sáng */
+  box-shadow: 0 0 15px #8b5cf6, 0 0 25px #06b6d4, 0 0 15px #f87171; 
 }
 
 .button:hover {
@@ -296,7 +296,7 @@ body::before {
   box-shadow: 0 0 20px #ff66d9, 0 0 40px #ff8888;
 }
 .member-card{
-  width: 220px;                 /* nhỏ như cũ */
+  width: 220px;                 
   padding: 15px;
   background: rgba(255,255,255,0.05);
   border-radius: 14px;
