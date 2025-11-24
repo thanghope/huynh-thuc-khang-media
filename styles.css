@@ -350,4 +350,13 @@ body::before {
   transform: scale(1.08);
   border-color: rgba(255,50,50,0.4); 
 }
+/* canh cụt */
+/* .penguin {
+  position: fixed;
+  left: 10px;   
+  bottom: 10px; 
+  width: 120px; 
+  z-index: 9999;
+  pointer-events: none; 
+} */
 
