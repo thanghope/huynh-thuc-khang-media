@@ -1,4 +1,4 @@
-// app.js
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // set current year in footer
