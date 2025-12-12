@@ -1,17 +1,17 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
-  // set current year in footer
+  console.log('🚀 Page loaded');
+  
+  // ====== SET YEAR IN FOOTER ======
   const y = new Date().getFullYear();
   const yy = document.getElementById('year');
   if(yy) yy.textContent = y;
 
-  // Initialize lucide icons
+  // ====== LUCIDE ICONS ======
   if (window.lucide) {
-    try { lucide.createIcons(); } catch(e){ /* ignore */ }
+    try { lucide.createIcons(); } catch(e){ console.error('Lucide error:', e); }
   }
 
-  // Reveal on scroll with IntersectionObserver
+  // ====== REVEAL ON SCROLL ======
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   reveals.forEach(r => observer.observe(r));
 
-  // Tiny hover float effect: add subtle transform on pointerenter/leave to improve "float"
+  // ====== HOVER EFFECTS ======
   document.querySelectorAll('.value-card, .activity-card, .member-card, .card').forEach(el => {
     el.addEventListener('pointerenter', () => {
       el.style.transform = 'translateY(-10px) scale(1.02)';
@@ -43,26 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Buttons glow pulse on focus (keyboard nav)
+  // ====== BUTTON FOCUS GLOW ======
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('focus', () => btn.classList.add('neon-outline'));
     btn.addEventListener('blur', () => btn.classList.remove('neon-outline'));
   });
 
-  // Contact form (simple local UX)
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Basic confirmation (no backend) — replace with actual endpoint if needed
-      const btn = contactForm.querySelector('button');
-      btn.disabled = true;
-      btn.textContent = 'Đã gửi';
-      setTimeout(()=>{ btn.disabled=false; btn.textContent='Gửi'; }, 1200);
-    });
-  }
-
-  // small accessibility: smooth scroll for internal anchors
+  // ====== SMOOTH SCROLL ======
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const targetId = a.getAttribute('href').slice(1);
@@ -73,25 +60,92 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-});
-const form = document.getElementById("contact-form");
-const status = document.getElementById("status");
-const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfOJIPBgP_i5HRbhcs5N0JbXpIqZ4uyPSB0dUSmd8Syi2uJzA/viewform?usp=dialog"; // Form ID của m
 
-form.addEventListener("submit", function(e){
-  e.preventDefault();
-  const formData = new FormData(form);
+  // ====== SLIDER CODE ======
+  console.log('🎬 Initializing slider...');
+  
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const slides = document.querySelectorAll('.slide');
+  const leftBtn = document.querySelector('.arrow.left');
+  const rightBtn = document.querySelector('.arrow.right');
+  
+  console.log('Slider wrapper:', sliderWrapper);
+  console.log('Slides:', slides.length);
+  console.log('Left button:', leftBtn);
+  console.log('Right button:', rightBtn);
+  
+  if (!sliderWrapper || !slides.length) {
+    console.error('❌ Slider wrapper or slides not found!');
+    return;
+  }
+  
+  if (!leftBtn || !rightBtn) {
+    console.error('❌ Arrow buttons not found!');
+    return;
+  }
+  
+  console.log('✅ All slider elements found!');
+  
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  
+  function updateSlider() {
+    const offset = -currentIndex * 100;
+    sliderWrapper.style.transform = `translateX(${offset}%)`;
+    console.log('📸 Moved to slide:', currentIndex);
+  }
+  
+  // QUAN TRỌNG: Dùng onclick thay vì addEventListener
+  leftBtn.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('⬅️ Left button clicked!');
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  };
+  
+  rightBtn.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('➡️ Right button clicked!');
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  };
+  
+  // Auto slide (bỏ comment nếu muốn tự động chuyển)
+  /*
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  }, 5000);
+  */
+  
+  console.log('✅ Slider initialized!');
 
-  fetch(GOOGLE_FORM_ACTION, {
-    method: "POST",
-    mode: "no-cors",
-    body: formData
-  })
-  .then(() => {
-    status.innerText = "✓ Gửi thành công! Cảm ơn bạn.";
-    form.reset();
-  })
-  .catch(() => {
-    status.innerText = "✗ Gửi thất bại, thử lại.";
-  });
+  // ====== GOOGLE FORM SUBMISSION ======
+  const form = document.querySelector('form[action*="google.com/forms"]');
+  const status = document.getElementById('status');
+  
+  if (form && status) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const actionUrl = form.getAttribute('action');
+      
+      fetch(actionUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      })
+      .then(() => {
+        status.innerText = '✓ Gửi thành công! Cảm ơn bạn.';
+        status.style.color = '#4ade80';
+        form.reset();
+      })
+      .catch(() => {
+        status.innerText = '✗ Gửi thất bại, thử lại.';
+        status.style.color = '#f87171';
+      });
+    });
+  }
 });
