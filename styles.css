@@ -394,7 +394,7 @@ body::before {
   z-index: 9999;
   pointer-events: none; 
 } */
-/* ====== SLIDER STYLES ====== */
+/* ====== SLIDER RESPONSIVE FIX ====== */
 .activity-card-slider {
   position: relative;
   width: 100%;
@@ -438,6 +438,7 @@ body::before {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  color: #000;
 }
 
 .arrow:hover {
@@ -462,6 +463,7 @@ body::before {
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
   color: white;
   padding: 30px 20px;
+  z-index: 5;
 }
 
 .activity-caption h3 {
@@ -474,16 +476,22 @@ body::before {
   opacity: 0.9;
 }
 
-/* Responsive */
+/* ====== RESPONSIVE FOR MOBILE ====== */
 @media (max-width: 768px) {
   .activity-card-slider {
-    height: 400px;
+    height: 300px; /* Giảm chiều cao */
+    border-radius: 12px;
+  }
+  
+  .slide {
+    background-size: cover; /* Đảm bảo ảnh cover toàn bộ */
+    background-position: center center; /* Center ảnh */
   }
   
   .arrow {
     width: 40px;
     height: 40px;
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .arrow.left {
@@ -493,8 +501,46 @@ body::before {
   .arrow.right {
     right: 10px;
   }
+  
+  .activity-caption {
+    padding: 20px 15px;
+  }
+  
+  .activity-caption h3 {
+    font-size: 18px;
+  }
+  
+  .activity-caption p {
+    font-size: 14px;
+  }
 }
-.arrow {
-  pointer-events: auto !important;
-  cursor: pointer !important;
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .activity-card-slider {
+    height: 250px; /* Giảm thêm cho màn hình nhỏ */
+  }
+  
+  .arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+  
+  .arrow.left {
+    left: 8px;
+  }
+  
+  .arrow.right {
+    right: 8px;
+  }
+  
+  .activity-caption h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .activity-caption p {
+    font-size: 13px;
+  }
 }
