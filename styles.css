@@ -283,13 +283,13 @@ body::before {
 }
 
 /* set vị trí và tốc độ khác nhau cho từng snowflake */
-.snowflake:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+/* .snowflake:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
 .snowflake:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
 .snowflake:nth-child(3) { left: 35%; animation-duration: 12s; animation-delay: 1s; }
 .snowflake:nth-child(4) { left: 50%; animation-duration: 9s; animation-delay: 3s; }
 .snowflake:nth-child(5) { left: 65%; animation-duration: 11s; animation-delay: 0.5s; }
 .snowflake:nth-child(6) { left: 80%; animation-duration: 10s; animation-delay: 2.5s; }
-.snowflake:nth-child(7) { left: 90%; animation-duration: 12s; animation-delay: 1.5s; }
+.snowflake:nth-child(7) { left: 90%; animation-duration: 12s; animation-delay: 1.5s; } */
 
 .xmas-icons {
   position: fixed;
@@ -425,7 +425,7 @@ body::before {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.556);
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -479,13 +479,13 @@ body::before {
 /* ====== RESPONSIVE FOR MOBILE ====== */
 @media (max-width: 768px) {
   .activity-card-slider {
-    height: 300px; /* Giảm chiều cao */
+    height: 300px; 
     border-radius: 12px;
   }
   
   .slide {
-    background-size: cover; /* Đảm bảo ảnh cover toàn bộ */
-    background-position: center center; /* Center ảnh */
+    background-size: cover; 
+    background-position: center center; /
   }
   
   .arrow {
@@ -518,7 +518,7 @@ body::before {
 /* Extra small mobile */
 @media (max-width: 480px) {
   .activity-card-slider {
-    height: 250px; /* Giảm thêm cho màn hình nhỏ */
+    height: 250px; 
   }
   
   .arrow {
@@ -543,4 +543,41 @@ body::before {
   .activity-caption p {
     font-size: 13px;
   }
+}
+/* tet */
+body {
+  background: url("image/tet-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
+}
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* -------------------- */
+#modeBtn{
+  position: fixed;
+  top: 15px;
+  left: 15px;     /* đổi qua trái */
+  z-index: 9999;  /* nổi trên tất cả */
+
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+.dark {
+  background:#111;
+  color:white;
 }

@@ -16,9 +16,18 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
-  
+  <!-- tet -->
+  <style>
+    body {
+      background: url("image/tet-bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+  <!-- ------------------- -->
 </head>
+
 <body>
+  
    <!-- <img src="image/canhcut.png" class="penguin"> -->
     <!-- nhạc -->
   <audio id="bg-music" src="music.mp3" autoplay loop></audio>
@@ -38,19 +47,22 @@
     }
   });
 </script>
-
+<!--icon  -->
     <div class="xmas-icons">
-  <span>🎄</span><span>✨</span><span>🎁</span>
+  <span>🧧</span>
+    <span>🌸</span>
+    <span>🎆</span>
+    <span>🐍</span>
 </div>
 
-    <!-- Thêm vào body -->
+    <!-- Thêm vào body
 <div class="snowflakes" aria-hidden="true">
   <div class="snowflake">❄</div>
   <div class="snowflake">❄</div>
   <div class="snowflake">❄</div>
   <div class="snowflake">❄</div>
   <div class="snowflake">❄</div>
-</div>
+</div> -->
 
   <header class="site-header glass sticky">
     <div class="container header-inner">
@@ -347,5 +359,74 @@ HTKmedia.team@gmail.com</a></p>
   </footer>
 
   <script src="app.js" defer></script>
+  <!-- tet -->
+   <canvas id="fireworks"></canvas>
+   <script>
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+
+const colors = [
+  "#ff3838", // đỏ
+  "#ffd93d", // vàng
+  "#4cd137", // xanh lá
+  "#18dcff", // xanh dương
+  "#e056fd", // tím
+  "#ff9f1a"  // cam
+];
+
+document.addEventListener("click", e => {
+  const color = colors[Math.floor(Math.random()*colors.length)];
+
+  for(let i=0;i<30;i++){
+    particles.push({
+      x:e.clientX,
+      y:e.clientY,
+      dx:(Math.random()-0.5)*7,
+      dy:(Math.random()-0.5)*7,
+      life:60,
+      color: color
+    });
+  }
+});
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,i)=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
+    p.life--;
+
+    ctx.globalAlpha = p.life/60;
+    ctx.fillStyle = p.color;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,4,0,6.28);
+    ctx.fill();
+
+    if(p.life<=0) particles.splice(i,1);
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+
+<!-- ------- -->
+ <button id="modeBtn">🌙</button>
+<script>
+document.getElementById("modeBtn").onclick = () =>{
+  document.body.classList.toggle("dark");
+}
+</script>
+
 </body>
 </html>
