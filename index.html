@@ -434,11 +434,21 @@
     }
 
     .slide {
-      min-width: 100%;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0d1828;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 
     .slide::after {
       content: "";
@@ -614,8 +624,8 @@
 
     .music-btn {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
+      right: 12px;
+  bottom: 80px;
       z-index: 60;
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(7, 17, 31, 0.72);
@@ -662,33 +672,119 @@
     }
 
     @media (max-width: 720px) {
-      .section { padding: 76px 0; }
-      .site-header {
-        top: 8px;
-        width: calc(100% - 16px);
-        margin-top: 8px;
-      }
-      .header-inner {
-        padding: 12px;
-        flex-wrap: wrap;
-      }
-      .brand-text { white-space: normal; font-size: 0.95rem; }
-      .hero-section { padding-top: 96px; }
-      .hero-inner,
-      .join-inner,
-      .about-grid,
-      .values-grid,
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-      .screen,
-      .activity-slider,
-      .slides { min-height: 420px; height: 420px; }
-      .floating-icons { inset: 16px 16px auto auto; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .music-btn { right: 12px; bottom: 12px; }
-      .floating-decor { left: 12px; bottom: 12px; }
-    }
+  .section { padding: 76px 0; }
+
+  .site-header {
+    top: 8px;
+    width: calc(100% - 16px);
+    margin-top: 8px;
+  }
+
+  .header-inner {
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+
+  .brand-text {
+    white-space: normal;
+    font-size: 0.95rem;
+  }
+
+  .hero-section {
+    padding-top: 96px;
+  }
+
+  .hero-inner,
+  .join-inner,
+  .about-grid,
+  .values-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screen {
+    min-height: 420px;
+    height: 420px;
+  }
+
+  .activity-slider {
+  min-height: 500px;
+  height: 500px;
+}
+
+  .slides {
+    min-height: unset;
+    height: 100%;
+  }
+
+  .slide {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .activity-caption {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 18px;
+    max-width: none;
+    border-radius: 18px;
+    z-index: 2;
+  }
+
+  .activity-caption h3 {
+    font-size: 1.05rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    padding-inline: 44px;
+  }
+
+  .activity-caption p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .arrow {
+    top: auto;
+    bottom: 165px;
+    transform: none;
+    width: 42px;
+    height: 42px;
+    font-size: 1.25rem;
+    z-index: 10;
+  }
+
+  .arrow.left {
+    left: 18px;
+  }
+
+  .arrow.right {
+    right: 18px;
+  }
+
+  .dots {
+    bottom: 24px;
+  }
+
+  .floating-icons {
+    inset: 16px 16px auto auto;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .music-btn {
+    right: 12px;
+  bottom: 80px;
+  }
+
+  .floating-decor {
+    left: 12px;
+    bottom: 12px;
+  }
+}
   </style>
 </head>
 <body>
@@ -884,18 +980,18 @@
           <div class="activity-shell reveal">
             <div class="activity-slider" id="activitySlider">
               <div class="slides" id="slides">
-                <div class="slide" style="background-image: url('image/hoatdong/c1.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c2.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c3.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c4.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c5.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c6.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c7.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c8.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c9.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c10.jpg');"></div>
-                <div class="slide" style="background-image: url('image/hoatdong/c11.jpg');"></div>
-              </div>
+  <div class="slide"><img src="image/hoatdong/c1.jpg" alt="Hoạt động 1"></div>
+  <div class="slide"><img src="image/hoatdong/c2.jpg" alt="Hoạt động 2"></div>
+  <div class="slide"><img src="image/hoatdong/c3.jpg" alt="Hoạt động 3"></div>
+  <div class="slide"><img src="image/hoatdong/c4.jpg" alt="Hoạt động 4"></div>
+  <div class="slide"><img src="image/hoatdong/c5.jpg" alt="Hoạt động 5"></div>
+  <div class="slide"><img src="image/hoatdong/c6.jpg" alt="Hoạt động 6"></div>
+  <div class="slide"><img src="image/hoatdong/c7.jpg" alt="Hoạt động 7"></div>
+  <div class="slide"><img src="image/hoatdong/c8.jpg" alt="Hoạt động 8"></div>
+  <div class="slide"><img src="image/hoatdong/c9.jpg" alt="Hoạt động 9"></div>
+  <div class="slide"><img src="image/hoatdong/c10.jpg" alt="Hoạt động 10"></div>
+  <div class="slide"><img src="image/hoatdong/c11.jpg" alt="Hoạt động 11"></div>
+</div>
 
               <button class="arrow left" id="prevBtn" aria-label="Ảnh trước">‹</button>
               <button class="arrow right" id="nextBtn" aria-label="Ảnh tiếp theo">›</button>
@@ -956,7 +1052,7 @@
   </footer>
 
   <button id="musicBtn" class="music-btn" type="button">🔇 Bật nhạc</button>
-  <div class="floating-decor" aria-hidden="true"><span>🧧</span><span>🌸</span><span>🎆</span><span>🐍</span></div>
+  <!-- <div class="floating-decor" aria-hidden="true"><span>🧧</span><span>🌸</span><span>🎆</span><span>🐍</span></div> -->
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

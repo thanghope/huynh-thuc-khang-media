@@ -830,3 +830,63 @@ a {
     font-size: 13px;
   }
 }
+@media (max-width: 720px) {
+  .activity-slider {
+    min-height: auto;
+    height: auto;
+    aspect-ratio: 9 / 14;
+  }
+
+  .slides {
+    height: 100%;
+    min-height: unset;
+  }
+
+  .slide {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .activity-caption {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 18px;
+    max-width: none;
+    width: auto;
+    border-radius: 18px;
+  }
+
+  .activity-caption h3 {
+    font-size: 1.05rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    padding-inline: 44px;
+  }
+
+  .activity-caption p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .arrow {
+    top: auto;
+    bottom: 165px; /* đẩy nút lên trên vùng caption */
+    transform: none;
+    width: 42px;
+    height: 42px;
+    font-size: 1.25rem;
+  }
+
+  .arrow.left {
+    left: 18px;
+  }
+
+  .arrow.right {
+    right: 18px;
+  }
+
+  .dots {
+    bottom: 24px;
+  }
+}
