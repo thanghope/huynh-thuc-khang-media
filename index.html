@@ -1,125 +1,760 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <link rel="icon" type="image/png" href="image/canhcut.png">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Huỳnh Thúc Kháng Media - CLB truyền thông, công nghệ và sáng tạo dành cho học sinh." />
   <title>Huỳnh Thúc Kháng Media</title>
-  
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Lucide icons -->
+  <link rel="icon" type="image/jpg" href="image/newlg.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.min.js"></script>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-  <!-- tet -->
   <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: rgba(255, 255, 255, 0.06);
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --text: #ecf4ff;
+      --muted: #a9bdd7;
+      --line: rgba(255, 255, 255, 0.12);
+      --primary: #6ee7ff;
+      --primary-2: #8b5cf6;
+      --accent: #22d3ee;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      background: url("image/tet-bg.jpg") no-repeat center center fixed;
+      font-family: 'Poppins', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.18), transparent 28%),
+        linear-gradient(180deg, #07111f 0%, #091524 40%, #07101c 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .section { padding: 96px 0; }
+    .section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 44px;
+    }
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 10px;
+      line-height: 1.12;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      width: min(var(--container), calc(100% - 24px));
+      margin: 14px auto 0;
+      border-radius: 20px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    }
+
+    .brand-text {
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .brand-text strong {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #06101e;
+      background: linear-gradient(135deg, var(--primary), #c4b5fd);
+      box-shadow: 0 10px 30px rgba(110, 231, 255, 0.25);
+    }
+    .btn-outline {
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+    .btn-ghost {
+      border-color: rgba(255,255,255,0.12);
+      background: transparent;
+      color: #fff;
+    }
+    .small-cta { padding: 10px 16px; }
+    .large { padding: 14px 24px; }
+
+    .hero-section {
+      position: relative;
+      padding: 108px 0 72px;
+    }
+
+    .hero-section::before,
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -1;
+    }
+
+    .hero-section::before {
+      width: 280px;
+      height: 280px;
+      background: rgba(34, 211, 238, 0.16);
+      top: 40px;
+      left: -60px;
+    }
+
+    .hero-section::after {
+      width: 320px;
+      height: 320px;
+      background: rgba(139, 92, 246, 0.14);
+      right: -80px;
+      top: 90px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
+      color: var(--primary);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .accent {
+      background: linear-gradient(135deg, #ffffff, var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d9ebff;
+      font-size: 0.92rem;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .device-mockup {
+      position: relative;
+      padding: 18px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .screen {
+      min-height: 500px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      padding: 28px;
+      background:
+        linear-gradient(160deg, rgba(110,231,255,0.12), rgba(139,92,246,0.08)),
+        url('image/newlg.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,12,20,0.12), rgba(4,10,18,0.82));
+    }
+
+    .mockup-card, .floating-icons {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mockup-card {
+      width: min(100%, 340px);
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(12px);
+    }
+
+    .mockup-card h3 { margin-bottom: 8px; font-size: 1.3rem; }
+    .mockup-card p { color: #d7e9ff; }
+
+    .floating-icons {
+      position: absolute;
+      inset: 24px 24px auto auto;
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .floating-icons i {
+      width: 46px;
+      height: 46px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .about-grid,
+    .values-grid,
+    .team-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .about-grid { grid-template-columns: repeat(4, 1fr); }
+    .values-grid { grid-template-columns: repeat(5, 1fr); }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .card,
+    .value-card,
+    .member-card,
+    .contact-card,
+    .activity-shell {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+    }
+
+    .card:hover,
+    .value-card:hover,
+    .member-card:hover,
+    .activity-shell:hover {
+      transform: translateY(-6px);
+      border-color: rgba(110,231,255,0.28);
+      background: var(--panel-strong);
+    }
+
+    .card h3,
+    .value-card h4,
+    .member-card h4 {
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .value-card p,
+    .member-card p,
+    .contact-card p { color: var(--muted); }
+
+    .icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(110,231,255,0.16), rgba(139,92,246,0.18));
+      border: 1px solid rgba(255,255,255,0.12);
+      overflow: hidden;
+    }
+
+    .icon-img { width: 100%; height: 100%; object-fit: cover; }
+
+    .member-card {
+      text-align: center;
+      padding: 28px 22px;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
       background-size: cover;
+      background-position: center;
+      border: 3px solid rgba(255,255,255,0.14);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+    }
+
+    .role {
+      color: var(--primary) !important;
+      font-weight: 600;
+    }
+
+    .activities-grid { display: grid; }
+
+    .activity-shell {
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .activity-slider {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 520px;
+      background: #0d1828;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.55s ease;
+      height: 520px;
+    }
+
+    .slide {
+      min-width: 100%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,10,18,0.08), rgba(4,10,18,0.78));
+    }
+
+    .activity-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(7, 17, 31, 0.58);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      max-width: 520px;
+    }
+
+    .activity-caption h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .activity-caption p { color: #d6e8ff; }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      background: rgba(7,17,31,0.55);
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .arrow.left { left: 16px; }
+    .arrow.right { right: 16px; }
+
+    .dots {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.28);
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .dot.active {
+      width: 28px;
+      background: var(--primary);
+    }
+
+    .join-inner {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .join-left,
+    .contact-card {
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .benefits {
+      list-style: none;
+      margin: 22px 0 28px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .benefits li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ddecff;
+    }
+
+    .benefits li::before {
+      content: "✓";
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(110,231,255,0.14);
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .contact-card h4 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+
+    .contact-card a {
+      color: var(--primary);
+      word-break: break-word;
+    }
+
+    .contact-form {
+      margin-top: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 14px 16px;
+      outline: none;
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #a8bdd9;
+    }
+
+    .site-footer {
+      padding: 26px 0 42px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+    }
+
+    .foot-right {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .music-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(7, 17, 31, 0.72);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .floating-decor {
+      position: fixed;
+      left: 16px;
+      bottom: 18px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      opacity: 0.75;
+      pointer-events: none;
+      font-size: 1.35rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner,
+      .join-inner,
+      .about-grid,
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 76px 0; }
+      .site-header {
+        top: 8px;
+        width: calc(100% - 16px);
+        margin-top: 8px;
+      }
+      .header-inner {
+        padding: 12px;
+        flex-wrap: wrap;
+      }
+      .brand-text { white-space: normal; font-size: 0.95rem; }
+      .hero-section { padding-top: 96px; }
+      .hero-inner,
+      .join-inner,
+      .about-grid,
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .screen,
+      .activity-slider,
+      .slides { min-height: 420px; height: 420px; }
+      .floating-icons { inset: 16px 16px auto auto; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .music-btn { right: 12px; bottom: 12px; }
+      .floating-decor { left: 12px; bottom: 12px; }
     }
   </style>
-  <!-- ------------------- -->
 </head>
-
 <body>
-  
-   <!-- <img src="image/canhcut.png" class="penguin"> -->
-    <!-- nhạc -->
-  <audio id="bg-music" src="music.mp3" autoplay loop></audio>
-<button id="music-btn">🔊 Bật/Tắt nhạc</button>
+  <audio id="bgMusic" src="music.mp3" loop></audio>
 
-<script>
-  const music = document.getElementById('bg-music');
-  const btn = document.getElementById('music-btn');
-
-  btn.addEventListener('click', () => {
-    if(music.paused){
-      music.play();
-      btn.textContent = "🔊 Tắt nhạc";
-    } else {
-      music.pause();
-      btn.textContent = "🔊 Bật nhạc";
-    }
-  });
-</script>
-<!--icon  -->
-    <div class="xmas-icons">
-  <span>🧧</span>
-    <span>🌸</span>
-    <span>🎆</span>
-    <span>🐍</span>
-</div>
-
-    <!-- Thêm vào body
-<div class="snowflakes" aria-hidden="true">
-  <div class="snowflake">❄</div>
-  <div class="snowflake">❄</div>
-  <div class="snowflake">❄</div>
-  <div class="snowflake">❄</div>
-  <div class="snowflake">❄</div>
-</div> -->
-
-  <header class="site-header glass sticky">
+  <header class="site-header glass">
     <div class="container header-inner">
-      <a class="brand" href="#hero">
-        <div class="logo-mark" aria-hidden="true">
-          <!-- simple SVG mark -->
-          <a href="#" class="brand">
-  <img src="image/htkmda.jpg" alt="Huỳnh Thúc Kháng Media Logo" class="brand-logo" />
-  <span class="brand-text">Huỳnh Thúc Kháng <strong>Media</strong></span>
-</a>
-
-        </div>
+      <a class="brand" href="#hero" aria-label="Huỳnh Thúc Kháng Media">
+        <img src="image/newlg.jpg" alt="Logo Huỳnh Thúc Kháng Media" class="brand-logo" />
+        <span class="brand-text">Huỳnh Thúc Kháng <strong>Media</strong></span>
       </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Điều hướng chính">
         <a href="#about">Giới thiệu</a>
         <a href="#values">Giá trị</a>
         <a href="#team">Ban chủ nhiệm</a>
         <a href="#activities">Hoạt động</a>
-        <a href="#join" class="cta small-cta">Tuyển thành viên</a>
+        <a href="#join">Tuyển thành viên</a>
       </nav>
 
-      <a class="btn btn-outline cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeAwF9CjfEegxs-PSoxqbQUqd7wNkNnfjca5wJsWjHwFQb_cg/viewform" target="_blank" rel="noopener">Đăng ký CLB</a>
+      <a class="btn btn-primary small-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeAwF9CjfEegxs-PSoxqbQUqd7wNkNnfjca5wJsWjHwFQb_cg/viewform" target="_blank" rel="noopener">
+        Đăng ký CLB
+      </a>
     </div>
   </header>
 
   <main>
-    <!-- su menh -->
     <section id="hero" class="hero-section">
       <div class="container hero-inner">
         <div class="hero-left reveal">
-          <h1 class="hero-title">Huỳnh Thúc Kháng Media — <span class="accent">Gen Z kiến tạo truyền thông số</span></h1>
-          <p class="hero-sub">CLB media – tech – sáng tạo dành cho học sinh.</p>
+          <div class="hero-kicker">
+            <i data-lucide="sparkles"></i>
+            <span>Media • Tech • Creative Club</span>
+          </div>
+
+          <h1 class="hero-title">
+            Huỳnh Thúc Kháng Media — <span class="accent">Gen Z kiến tạo truyền thông số</span>
+          </h1>
+          <p class="hero-sub">
+            Câu lạc bộ dành cho học sinh yêu thích truyền thông, quay dựng, thiết kế, công nghệ và những dự án sáng tạo thực tế trong môi trường học đường.
+          </p>
 
           <div class="hero-cta">
-            <a class="btn btn-primary glow" href="https://docs.google.com/forms/d/e/1FAIpQLSeAwF9CjfEegxs-PSoxqbQUqd7wNkNnfjca5wJsWjHwFQb_cg/viewform" target="_blank" rel="noopener">Đăng ký vào CLB</a>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeAwF9CjfEegxs-PSoxqbQUqd7wNkNnfjca5wJsWjHwFQb_cg/viewform" target="_blank" rel="noopener">Đăng ký vào CLB</a>
             <a class="btn btn-ghost" href="#about">Tìm hiểu thêm</a>
           </div>
 
           <ul class="hero-features">
-            <li class="tag">Quay | Chụp | Dựng</li>
-            <li class="tag">Thiết kế | Content</li>
-            <li class="tag">Công nghệ &amp; Sáng tạo</li>
+            <li class="tag">Quay • Chụp • Dựng</li>
+            <li class="tag">Thiết kế • Content</li>
+            <li class="tag">Công nghệ • Sáng tạo</li>
           </ul>
         </div>
 
-        <div class="hero-right reveal" data-delay="120">
+        <div class="hero-right reveal">
           <div class="device-mockup">
             <div class="screen">
-              <div class="mockup-card">
-                <h3> Nội dung đặc sắc</h3>
-                <p>Học dựng video, motion và UX content</p>
-              </div>
-              <div class="floating-icons">
+              <div class="floating-icons" aria-hidden="true">
                 <i data-lucide="camera"></i>
-                <i data-lucide="monitor"></i>
+                <i data-lucide="monitor-play"></i>
                 <i data-lucide="film"></i>
+              </div>
+
+              <div class="mockup-card">
+                <h3>Nội dung đặc sắc</h3>
+                <p>Học quay dựng, thiết kế, motion cơ bản và xây dựng tư duy truyền thông chuyên nghiệp.</p>
               </div>
             </div>
           </div>
@@ -127,220 +762,182 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="section about-section">
       <div class="container">
         <div class="section-head reveal">
           <h2>Giới thiệu</h2>
-          <p class="lede">CLB truyền thông — công nghệ dành cho học sinh HTK.</p>
+          <p class="lede">CLB truyền thông và công nghệ dành cho học sinh trường Huỳnh Thúc Kháng.</p>
         </div>
 
         <div class="about-grid">
-          <div class="card reveal" data-delay="80">
+          <article class="card reveal">
             <h3>Mục tiêu</h3>
-            <p>Phát triển truyền thông trường, xây dựng thương hiệu sự kiện và nội dung số chuyên nghiệp.</p>
-          </div>
-          <div class="card reveal" data-delay="160">
-            <h3>Hỗ trợ</h3>
-            <p>Quay, chụp, dựng, thiết kế — từ kỹ thuật cơ bản đến dựng chuyên nghiệp.</p>
-          </div>
-          <div class="card reveal" data-delay="240">
+            <p>Phát triển truyền thông học đường, xây dựng hình ảnh sự kiện và tạo ra nội dung số chất lượng cho nhà trường.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Kỹ năng</h3>
+            <p>Rèn luyện quay, chụp, dựng video, thiết kế đồ họa và viết nội dung từ nền tảng cơ bản đến thực chiến.</p>
+          </article>
+          <article class="card reveal">
             <h3>Công nghệ</h3>
-            <p>Áp dụng công nghệ vào content creation: motion, automation, tools, AI hỗ trợ ý tưởng.</p>
-          </div>
-          <div class="card reveal" data-delay="320">
+            <p>Ứng dụng công cụ số, AI và workflow hiện đại để tăng hiệu quả sáng tạo nội dung và làm việc nhóm.</p>
+          </article>
+          <article class="card reveal">
             <h3>Cộng đồng</h3>
-            <p>Xây dựng cộng đồng sáng tạo, hỗ trợ lẫn nhau và làm dự án thực tế cho trường.</p>
-          </div>
+            <p>Xây dựng một môi trường năng động, hỗ trợ nhau phát triển và cùng thực hiện các dự án có giá trị.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- gia tri -->
     <section id="values" class="section values-section">
       <div class="container">
         <div class="section-head reveal">
           <h2>Giá trị cốt lõi</h2>
-          <p class="lede">Những giá trị định hướng mọi hoạt động của CLB.</p>
+          <p class="lede">Những giá trị định hướng tinh thần và cách làm việc của CLB.</p>
         </div>
 
         <div class="values-grid">
-          <article class="value-card reveal" data-delay="80">
-           <div class="icon-wrap">
-  <img src="image/bongden.png" alt="icon" class="icon-img">
-</div>
-
+          <article class="value-card reveal">
+            <div class="icon-wrap"><img src="image/bongden.png" alt="Sáng tạo" class="icon-img"></div>
             <h4>Sáng tạo</h4>
-            <p>Luôn thử nghiệm ý tưởng mới, khác biệt.</p>
+            <p>Không ngừng thử nghiệm những ý tưởng mới và khác biệt.</p>
           </article>
-
-          <article class="value-card reveal" data-delay="160">
-            <div class="icon-wrap">
-  <img src="image/AIpng.png" alt="icon" class="icon-img">
-</div>
+          <article class="value-card reveal">
+            <div class="icon-wrap"><img src="image/AIpng.png" alt="Công nghệ" class="icon-img"></div>
             <h4>Công nghệ</h4>
-            <p>Ứng dụng công nghệ giúp content hiệu quả hơn.</p>
+            <p>Tận dụng công nghệ để tối ưu quy trình và nâng chất lượng sản phẩm.</p>
           </article>
-
-          <article class="value-card reveal" data-delay="240">
-               <div class="icon-wrap">
-  <img src="image/cn.png" alt="icon" class="icon-img">
-</div>
+          <article class="value-card reveal">
+            <div class="icon-wrap"><img src="image/cn.png" alt="Chuyên nghiệp" class="icon-img"></div>
             <h4>Chuyên nghiệp</h4>
-            <p>Tinh thần làm việc chuẩn, đầu ra chất lượng.</p>
+            <p>Làm việc có quy trình, chỉn chu trong từng chi tiết và đầu ra.</p>
           </article>
-
-          <article class="value-card reveal" data-delay="320">
-                    <div class="icon-wrap">
-  <img src="image/tn.jpg" alt="icon" class="icon-img">
-</div>
+          <article class="value-card reveal">
+            <div class="icon-wrap"><img src="image/tn.jpg" alt="Trách nhiệm" class="icon-img"></div>
             <h4>Trách nhiệm</h4>
-            <p>Đảm bảo nội dung đúng thực tế, an toàn.</p>
+            <p>Tôn trọng sự thật, đảm bảo nội dung an toàn và có giá trị tích cực.</p>
           </article>
-
-          <article class="value-card reveal" data-delay="400">
-                    <div class="icon-wrap">
-  <img src="image/nn.jpg" alt="icon" class="icon-img">
-</div>
+          <article class="value-card reveal">
+            <div class="icon-wrap"><img src="image/nn.jpg" alt="Năng động" class="icon-img"></div>
             <h4>Năng động</h4>
-            <p>Tốc độ triển khai, phản hồi nhanh, năng lượng cao.</p>
+            <p>Phản hồi nhanh, triển khai linh hoạt và luôn giữ tinh thần tích cực.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- TEAM -->
     <section id="team" class="section team-section">
       <div class="container">
         <div class="section-head reveal">
           <h2>Ban chủ nhiệm</h2>
-          <p class="lede">Những gương mặt dẫn dắt .</p>
+          <p class="lede">Những gương mặt dẫn dắt và truyền cảm hứng cho CLB.</p>
         </div>
 
         <div class="team-grid">
-          <!-- ban chu nhiem -->
-          <div class="member-card reveal" data-delay="100">
-            <div class="avatar" style="background-image:url('image/hct.jpg')"></div>
+          <article class="member-card reveal">
+            <div class="avatar" style="background-image: url('image/hct.jpg');"></div>
             <h4>Hồ Chí Thắng</h4>
             <p class="role">Chủ nhiệm</p>
-          </div>
-        
+          </article>
 
-          <div class="member-card reveal" data-delay="160">
-            <div class="avatar" style="background-image:url('image/nguyen.png')"></div>
+          <article class="member-card reveal">
+            <div class="avatar" style="background-image: url('image/nguyen.png');"></div>
             <h4>Nguyễn Thảo Nguyên</h4>
             <p class="role">Phó chủ nhiệm</p>
-          </div>
+          </article>
+          
+          <article class="member-card reveal">
+            <div class="avatar" style="background-image: url('image/hinhla.jpg');"></div>
+            <h4>Phan Hà Linh</h4>
+            <p class="role">Trưởng ban hậu cần</p>
+          </article>
 
-          <div class="member-card reveal" data-delay="220">
-            <div class="avatar" style="background-image:url('image/phuc.png')"></div>
+          <article class="member-card reveal">
+            <div class="avatar" style="background-image: url('image/phuc.png');"></div>
             <h4>Huỳnh Xuân Phúc</h4>
             <p class="role">Trưởng ban truyền thông</p>
-          </div>
-          
-          <div class="member-card reveal" data-delay="450">
-            <div class="avatar" style="background-image:url('image/hinhla.jpg')"></div>
-            <h4>Phan Hà Linh </h4>
-            <p class="role">Trưởng ban hậu cần</p>
-            <div class="info-box"></div>
-          </div>
+          </article>
 
-          <div class="member-card reveal" data-delay="280">
-            <div class="avatar" style="background-image:url('image/td.png')"></div>
+          <article class="member-card reveal">
+            <div class="avatar" style="background-image: url('image/td.png');"></div>
             <h4>Nguyễn Trọng Đại</h4>
-            <p class="role">Trưởng ban kĩ thuật</p>
-          </div>
-          <div class="member-card reveal" data-delay="370">
-            <div class="avatar" style="background-image:url('image/tth.jpg')"></div>
+            <p class="role">Trưởng ban kỹ thuật</p>
+          </article>
+          <article class="member-card reveal">
+            <div class="avatar" style="background-image: url('image/tth.jpg');"></div>
             <h4>Trịnh Thu Thảo</h4>
             <p class="role">Trưởng ban nội dung</p>
-            
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities" class="section activities-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Hoạt động</h2>
+          <p class="lede">Những khoảnh khắc nổi bật và hoạt động tiêu biểu của CLB.</p>
+        </div>
+
+        <div class="activities-grid">
+          <div class="activity-shell reveal">
+            <div class="activity-slider" id="activitySlider">
+              <div class="slides" id="slides">
+                <div class="slide" style="background-image: url('image/hoatdong/c1.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c2.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c3.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c4.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c5.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c6.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c7.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c8.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c9.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c10.jpg');"></div>
+                <div class="slide" style="background-image: url('image/hoatdong/c11.jpg');"></div>
+              </div>
+
+              <button class="arrow left" id="prevBtn" aria-label="Ảnh trước">‹</button>
+              <button class="arrow right" id="nextBtn" aria-label="Ảnh tiếp theo">›</button>
+              <div class="dots" id="dots"></div>
+
+              <div class="activity-caption">
+                <h3>Casting thành viên</h3>
+                <p>Hoạt động tuyển chọn thành viên mới với tinh thần năng động, sáng tạo và đầy nhiệt huyết.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- HOAT DONG -->
-   <section id="activities" class="section activities-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2>Hoạt động</h2>
-      <p class="lede">Các hoạt động tiêu biểu.</p>
-    </div>
 
-    <div class="activities-grid">
-
-      <div class="activity-card-slider reveal" data-delay="80">
-
-        <div class="slider-wrapper">
-          <div class="slide" style="background-image:url('image/hoatdong/c1.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c2.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c3.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c4.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c5.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c6.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c7.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c8.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c9.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c10.jpg')"></div>
-          <div class="slide" style="background-image:url('image/hoatdong/c11.jpg')"></div>
-        </div>
-
-        <!-- Nút điều hướng -->
- 
-        <button class="arrow left">‹</button>
-        <button class="arrow right">›</button>
-
-        <!-- Chữ mô tả -->
-        <div class="activity-caption">
-          <h3>Casting thành viên</h3>
-          <p>Hoạt động tuyển chọn thành viên mới đầy năng lượng.</p>
-        </div>
-
-      </div> <!-- end slider -->
-
-    </div> <!-- end activities-grid -->
-  </div> <!-- end container -->
-</section>
-
-
-    <!-- JOIN -->
     <section id="join" class="section join-section">
       <div class="container join-inner">
         <div class="join-left reveal">
           <h2>Tuyển thành viên</h2>
-          <p class="lede">Vì sao bạn nên tham gia?</p>
+          <p class="lede">Gia nhập CLB để phát triển kỹ năng, trải nghiệm dự án thật và mở rộng kết nối.</p>
 
           <ul class="benefits">
-            <li>Quay, chụp, dựng video</li>
-            <li>Thiết kế đồ họa</li>
-            <li>Viết nội dung &amp; truyền thông đa nền tảng</li>
-            <li>Ứng dụng công nghệ trong content creation</li>
+            <li>Quay, chụp, dựng video sự kiện</li>
+            <li>Thiết kế đồ họa và nhận diện truyền thông</li>
+            <li>Viết content đa nền tảng</li>
+            <li>Ứng dụng công nghệ vào quy trình sáng tạo</li>
           </ul>
-<!-- lien he -->
-        <a class="btn btn-primary glow large" href="https://docs.google.com/forms/d/e/1FAIpQLSeAwF9CjfEegxs-PSoxqbQUqd7wNkNnfjca5wJsWjHwFQb_cg/viewform" target="_blank" rel="noopener">Đăng ký ngay</a>
+
+          <a class="btn btn-primary large" href="https://docs.google.com/forms/d/e/1FAIpQLSeAwF9CjfEegxs-PSoxqbQUqd7wNkNnfjca5wJsWjHwFQb_cg/viewform" target="_blank" rel="noopener">Đăng ký ngay</a>
         </div>
-        <div class="join-right reveal" data-delay="140">
-          <div class="contact-card">
-            <h4>Liên hệ</h4>
-            <p><strong>Email:</strong> <a href="mailto:
-HTKmedia.team@gmail.com">
-HTKmedia.team@gmail.com</a></p>
-           <p><strong>Fanpage:</strong> 
-  <a href="https://www.facebook.com/profile.php?id=61581552172834" target="_blank">
-    Facebook / HuynhTucKhangMedia
-  </a>
-</p>
 
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSfOJIPBgP_i5HRbhcs5N0JbXpIqZ4uyPSB0dUSmd8Syi2uJzA/formResponse" 
-      method="POST" target="_blank">
-  <input type="text" name="entry.1289752718" placeholder="Tên của bạn" required>
-  <input type="email" name="entry.572120005" placeholder="Email của bạn" required>
-  <textarea name="entry.484444233" placeholder="Nội dung"></textarea>
-  <button type="submit">Gửi</button>
-</form>
+        <div class="contact-card reveal">
+          <h4>Liên hệ với chúng mình</h4>
+          <p><strong>Email:</strong> <a href="mailto:HTKmedia.team@gmail.com">HTKmedia.team@gmail.com</a></p>
+          <p><strong>Fanpage:</strong> <a href="https://www.facebook.com/profile.php?id=61581552172834" target="_blank" rel="noopener">Facebook / HuynhTucKhangMedia</a></p>
 
-<div id="status"></div>
-
+          <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfOJIPBgP_i5HRbhcs5N0JbXpIqZ4uyPSB0dUSmd8Syi2uJzA/formResponse" method="POST" target="_blank">
+            <input type="text" name="entry.1289752718" placeholder="Tên của bạn" required>
+            <input type="email" name="entry.572120005" placeholder="Email của bạn" required>
+            <textarea name="entry.484444233" placeholder="Nội dung"></textarea>
+            <button class="btn btn-outline" type="submit">Gửi liên hệ</button>
+          </form>
         </div>
       </div>
     </section>
@@ -349,84 +946,119 @@ HTKmedia.team@gmail.com</a></p>
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="foot-left">
-        <small>© <span id="year"></span> Huỳnh Thúc Kháng Media .</small>
+        <small>© <span id="year"></span> Huỳnh Thúc Kháng Media.</small>
       </div>
       <div class="foot-right">
-        <a href="#" class="foot-link">Chính sách</a>
-        <a href="https://www.facebook.com/profile.php?id=61581552172834" class="foot-link">Liên hệ</a>
+        <a href="#about" class="foot-link">Giới thiệu</a>
+        <a href="https://www.facebook.com/profile.php?id=61581552172834" class="foot-link" target="_blank" rel="noopener">Liên hệ</a>
       </div>
     </div>
   </footer>
 
-  <script src="app.js" defer></script>
-  <!-- tet -->
-   <canvas id="fireworks"></canvas>
-   <script>
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
+  <button id="musicBtn" class="music-btn" type="button">🔇 Bật nhạc</button>
+  <div class="floating-decor" aria-hidden="true"><span>🧧</span><span>🌸</span><span>🎆</span><span>🐍</span></div>
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-let particles = [];
+    if (window.lucide) {
+  lucide.createIcons();
+}
 
-const colors = [
-  "#ff3838", // đỏ
-  "#ffd93d", // vàng
-  "#4cd137", // xanh lá
-  "#18dcff", // xanh dương
-  "#e056fd", // tím
-  "#ff9f1a"  // cam
-];
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealElements.forEach(el => revealObserver.observe(el));
 
-document.addEventListener("click", e => {
-  const color = colors[Math.floor(Math.random()*colors.length)];
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
+    const setActiveNav = () => {
+      let current = 'hero';
+      sections.forEach(section => {
+        const top = window.scrollY;
+        const offset = section.offsetTop - 140;
+        const height = section.offsetHeight;
+        if (top >= offset && top < offset + height) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    };
+    window.addEventListener('scroll', setActiveNav);
+    setActiveNav();
 
-  for(let i=0;i<30;i++){
-    particles.push({
-      x:e.clientX,
-      y:e.clientY,
-      dx:(Math.random()-0.5)*7,
-      dy:(Math.random()-0.5)*7,
-      life:60,
-      color: color
+    const slides = document.getElementById('slides');
+    const slideItems = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+    let autoSlide;
+
+    slideItems.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = `dot ${index === 0 ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Đi tới ảnh ${index + 1}`);
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
     });
-  }
-});
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+    const dots = document.querySelectorAll('.dot');
 
-  particles.forEach((p,i)=>{
-    p.x+=p.dx;
-    p.y+=p.dy;
-    p.life--;
+    function updateSlider() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+    }
 
-    ctx.globalAlpha = p.life/60;
-    ctx.fillStyle = p.color;
+    function goToSlide(index) {
+      currentIndex = (index + slideItems.length) % slideItems.length;
+      updateSlider();
+      restartAutoSlide();
+    }
 
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,4,0,6.28);
-    ctx.fill();
+    function nextSlide() { goToSlide(currentIndex + 1); }
+    function prevSlide() { goToSlide(currentIndex - 1); }
 
-    if(p.life<=0) particles.splice(i,1);
-  });
+    function startAutoSlide() {
+      autoSlide = setInterval(nextSlide, 4000);
+    }
 
-  ctx.globalAlpha = 1;
-  requestAnimationFrame(animate);
-}
+    function restartAutoSlide() {
+      clearInterval(autoSlide);
+      startAutoSlide();
+    }
 
-animate();
-</script>
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    startAutoSlide();
 
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let musicStarted = false;
 
-<!-- ------- -->
- <button id="modeBtn">🌙</button>
-<script>
-document.getElementById("modeBtn").onclick = () =>{
-  document.body.classList.toggle("dark");
-}
-</script>
+    async function toggleMusic() {
+      try {
+        if (!musicStarted || music.paused) {
+          await music.play();
+          musicStarted = true;
+          musicBtn.textContent = '🔊 Tắt nhạc';
+        } else {
+          music.pause();
+          musicBtn.textContent = '🔇 Bật nhạc';
+        }
+      } catch (error) {
+        musicBtn.textContent = '▶️ Phát nhạc';
+      }
+    }
 
+    musicBtn.addEventListener('click', toggleMusic);
+  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
